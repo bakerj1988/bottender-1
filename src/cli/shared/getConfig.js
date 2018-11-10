@@ -9,7 +9,7 @@ import invariant from 'invariant';
 import schema from './schema';
 import { bold } from './log';
 
-const getConfig = (configPath, platform) => {
+const getConfig = (configPath, key) => {
   const argv = arg(
     {
       '--skip-validate': Boolean,
@@ -33,11 +33,11 @@ const getConfig = (configPath, platform) => {
     }
   }
 
-  const result = get(config, platform, undefined);
+  const result = get(config, key, undefined);
 
   invariant(
     result,
-    `Could not find \`${platform}\` key, please check your config file is in the correct format.`
+    `Could not find \`${key}\` key, please check your config file is in the correct format.`
   );
 
   return result;
